@@ -32,9 +32,9 @@ int main(int argc, char **argv){
     {
         //Ausgabe
         printf("Time %2d: ", k+1);
-        for (int k = 0; k < array_size; k++)
+        for (int m = 0; m < array_size; m++)
         {
-           printf("%-2d", array[k]);
+           printf("%-2d", *(ptrarray + m));
         }
         printf("\n");
 
@@ -42,7 +42,7 @@ int main(int argc, char **argv){
         for (int i = 0; i < array_size; i++)
         {
 
-          if (array[i] == 1)        //Wenn Partikel da ist
+          if (*(ptrarray + i) == 1)        //Wenn Partikel da ist
             {
                 
                 int r = rand() % 2;     
@@ -52,18 +52,19 @@ int main(int argc, char **argv){
                     if ((i-1) >= 0)     //Check ob i im array liegt
                     {
 
-                        if (temp[i-1] == 1)     //Wenn bei -1 bereits Partikel ist dann Kollision -> i-1 = 0
+                        if (*(ptrtemp + i - 1) == 1)     //Wenn bei -1 bereits Partikel ist dann Kollision -> i-1 = 0
                         {
-                            temp[i-1] = 0;
+                            *(ptrtemp + i - 1) = 0;
                             printf("\nCollision on Index %d", i-1);
                         }
 
-                        else{                   // Wenn bei -1 kein Partikel ist dann i-1 = 1
-                            temp[i-1] = 1;
+                        else{                       // Wenn bei -1 kein Partikel ist dann i-1 = 1
+                            *(ptrtemp + i - 1) = 1;
                         }
+
                     }
                     else{
-                        temp[i] = array[i];     //Wenn Partikel am Rand dann soll es am Rand bleiben
+                        *(ptrtemp + i) = *(ptrarray + i);     //Wenn Partikel am Rand dann soll es am Rand bleiben
                     }
                     
                 }
@@ -72,19 +73,19 @@ int main(int argc, char **argv){
                     if ( (i + 1) < array_size)  //Check ob i im array liegt
                     {
 
-                        if (temp[i+1] == 1)     //Wenn bei +1 bereits Partikel ist dann Kollision -> i+1 = 0
+                        if (*(ptrtemp + i + 1) == 1)     //Wenn bei +1 bereits Partikel ist dann Kollision -> i+1 = 0
                         {
-                            temp[i+1] = 0;
+                            *(ptrtemp + i + 1) = 0;
                             printf("\nCollision on Index %d", i+1);
                         }
 
                         else{                   // Wenn bei +1 kein Partikel ist dann i+1 = 1      
-                            temp[i+1] = 1;
+                            *(ptrtemp + i + 1) = 1;
                         }
 
                     }
                     else{
-                        temp[i] = array[i];     //Wenn Partikel am Rand dann soll es am Rand bleiben
+                        *(ptrtemp + i) = *(ptrarray + i);     //Wenn Partikel am Rand dann soll es am Rand bleiben
                     }
                 }
             }  
@@ -94,14 +95,14 @@ int main(int argc, char **argv){
         //Array temp auf Array array kopieren
         for (int j = 0; j < array_size; j++)
         {
-            array[j] = temp[j];
+            *(ptrarray + j) = *(ptrtemp + j);
             
         }
         printf("\n\n");
         //Temp Array nullen
         for (int i = 0; i < array_size; i++)
         {
-            temp[i] = 0;
+            *(ptrtemp + i) = 0;
         }
         
     }   
