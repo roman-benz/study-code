@@ -6,7 +6,7 @@
 #define timesteps 5
 #define array_size 10
 
-int array[array_size] = {0, 0, 0};
+int array[array_size];
 
 int main(int argc, char **argv){
 
