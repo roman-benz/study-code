@@ -10,7 +10,7 @@ int array[array_size];
 
 int main(int argc, char **argv){
 
-    srand((unsigned)time(NULL));                //Random seed fuer 
+    srand((unsigned)time(NULL));                //Random seed fuer rand()
 
     //Partikel setzen
     array[2] = 1;    
