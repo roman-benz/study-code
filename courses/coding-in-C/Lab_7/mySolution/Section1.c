@@ -13,7 +13,7 @@ int main(void)
         *(ptr + i) = i*i;
     }
 
-    int *newaddress = (int*)realloc(ptr, (sizeof userinput) * 2);
+    int *newaddress = realloc(ptr, (sizeof userinput) * 2);
 
     printf("Array: ");
     for (int i = 0; i < userinput*2; i++)
