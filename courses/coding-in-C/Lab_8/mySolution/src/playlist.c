@@ -1,26 +1,36 @@
 #include "../include/playlist.h"
 
+Song* neuerSong(char *einTitel, char *einArtist){
+    Song *einSong = malloc(sizeof(*einSong));
+    einSong->artist = einArtist;
+    einSong->title = einTitel;
+    return einSong;
+}
+
+
 void init_playlist(Playlist *einePlaylist){
     einePlaylist->headsong = NULL;
     einePlaylist->laenge = 0;
 }
 
 void song_anhaengen(Playlist *einePlaylist, Song *einSong){
-    if (einePlaylist->laenge == 0)
+    if (einePlaylist->laenge < MAX_SONGS)
     {
-        einePlaylist->headsong = einSong;
-        einePlaylist->laenge++;
-    }
-    else{
-        Song *tempsong = einePlaylist->headsong;
-        while (tempsong->naechsterSong != NULL)
+        if (einePlaylist->laenge == 0)
         {
-            tempsong = tempsong->naechsterSong;
+            einePlaylist->headsong = einSong;
+            einePlaylist->laenge++;
         }
-        tempsong->naechsterSong = einSong;
-        einePlaylist->laenge++;
+        else{
+            Song *tempsong = einePlaylist->headsong;
+            while (tempsong->naechsterSong != NULL)
+            {
+                tempsong = tempsong->naechsterSong;
+            }
+            tempsong->naechsterSong = einSong;
+            einePlaylist->laenge++;
+        }
     }
-    
 }
 
 Song* song1_entfernen(Playlist *einePlaylist){
@@ -39,9 +49,37 @@ Song* song1_entfernen(Playlist *einePlaylist){
             Song *tempsong = einePlaylist->headsong;
             einePlaylist->headsong = einePlaylist->headsong->naechsterSong;
             einePlaylist->laenge--;
-            
+            return tempsong;
         }
         
     }
 
+}
+
+void song_entfernen(Playlist *einePlaylist, Song *einSong){
+    if (einSong == NULL || einePlaylist == NULL)
+    {
+        return NULL;
+    } 
+    Song *tempsong = einePlaylist->headsong;
+    if (einePlaylist->headsong == einSong)
+    {
+        einePlaylist->headsong = einePlaylist->headsong->naechsterSong;
+        einePlaylist->laenge--;
+        exit(0);
+    }
+    
+    while (tempsong->naechsterSong != NULL)
+    {
+        if (tempsong->naechsterSong != einSong)
+        {
+            tempsong = tempsong->naechsterSong;
+        }
+        else{
+            tempsong->naechsterSong = einSong->naechsterSong;
+            einSong = NULL;
+            einePlaylist->laenge--;
+        }        
+    }
+    
 }

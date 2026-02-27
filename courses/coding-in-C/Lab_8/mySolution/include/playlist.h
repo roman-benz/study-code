@@ -2,7 +2,7 @@
 
 #ifndef PLAYLIST_H
 #define PLAYLIST_H
-#define MAX_SONGS 1000;
+#define MAX_SONGS 1000
 
 typedef struct Song {
     char title[100];
@@ -14,6 +14,8 @@ typedef struct Playlist {
     Song *headsong;
     int laenge;
 } Playlist;
+
+Song* neuerSong(char *einTitel, char *einArtist);
 
 void init_playlist(Playlist *einePlaylist);
 
