@@ -203,8 +203,11 @@ Comments explain **intent**, assumptions, and design decisions. They should not 
 ### Rules
 
 - Each source file should begin with a short file header.
-- Public functions should be documented.
+- Public functions should be documented including:
+   - Return values
+   - Parameters
 - Explain **why**, not every trivial **what**.
+- Below is an **example** on how a function could be documented. Note: You can select your own style according to the rules above; just be consistent.
 
 ### Good
 ```cpp
