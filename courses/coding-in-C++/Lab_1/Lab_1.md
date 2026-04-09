@@ -57,7 +57,7 @@ The goal of this section is to familiarize yourself with the C++ coding conventi
 ### Task Description
 * Navigate to the __coding-in-C++__ folder and open the __cpp_coding_conventions.md__
 * Read the convention in detail at least up to point 18.)
-* If you do not understand something, align with colleagues, teachers or AI bots
+* Write down any point that is unclear to you for later discussions
 
 ## 🟢 Section III: Age Validation
 
@@ -114,6 +114,7 @@ Please enter your age:
 ```
 * Ensure that the user input is a number not some random text
 * Ensure that the user input is not negative
+* Ensure that the user input is not unrealistic high
 * Ask the user to re-enter the input if it was not valid
 * Use the portable data type __uint8_t__ in the main function to store entered age.
 
