@@ -14,6 +14,7 @@ void print_vector(std::vector<int> &flight_data){
 
 void sort_data(std::vector<int> &flight_data){
     std::sort(flight_data.begin(), flight_data.end());
+    print_vector(flight_data);
 }
 
 template <typename T>
@@ -21,10 +22,10 @@ void find_data(std::vector<int> &flight_data, T data){
     auto it = std::find(flight_data.begin(), flight_data.end(), data);
     if (it != flight_data.end())
     {
-        std::cout << data << " exists!" << std::endl;
+        std::cout << data << "Gefunden!" << std::endl;
     }
     else{
-        std::cout << "Data " << data << " not found!" << std::endl;
+        std::cout << "Data " << data << "Nicht gefunden!" << std::endl;
     }
     
 }
