@@ -17,3 +17,7 @@ DocumentLayout.json
 build/
 obj/
 bin/
+
+# Visual Studio local cache (IntelliSense, ipch, etc.)
+.vs/
+*.ipch
