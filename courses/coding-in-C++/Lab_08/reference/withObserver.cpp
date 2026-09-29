@@ -13,6 +13,7 @@ public:
     virtual ~Observer() = default;
 };
 
+
 // ======================================================
 // Subject
 // ======================================================
@@ -29,6 +30,7 @@ private:
         for (Observer *observer : observers)
         {
             observer->update(temperature);
+
         }
     }
 
@@ -59,6 +61,17 @@ public:
     }
 };
 
+class Alarm : public Observer{
+public:
+    void update(float value) override {
+        if (value > 40)
+        {
+            std::cout << "ALARM ALARM ALARM!" << std::endl;
+        }
+        
+    }
+};
+
 // ======================================================
 // Concrete Observer: Logger
 // ======================================================
@@ -82,11 +95,14 @@ int main()
 
     Display display;
     Logger logger;
+    Alarm alarm;
 
     sensor.add_observer(&display);
     sensor.add_observer(&logger);
+    sensor.add_observer(&alarm);
 
     sensor.set_temperature(23.5f);
+    sensor.set_temperature(33.5f);
 
     return 0;
 }

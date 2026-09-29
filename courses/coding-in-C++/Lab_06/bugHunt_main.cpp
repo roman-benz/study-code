@@ -7,7 +7,8 @@ int main()
 {
     Vehicle ego_vehicle("Vector X1");
 
-    DistanceSensor front_sensor("front", 25.0);
+    //DistanceSensor front_sensor("front", 25.0);
+    auto front_sensor = std::make_shared<DistanceSensor>("front", 25.0);
     DistanceSensor rear_sensor("rear", 1.2);
     DistanceSensor left_sensor("left", 0.8);
     DistanceSensor right_sensor("right", 3.0);

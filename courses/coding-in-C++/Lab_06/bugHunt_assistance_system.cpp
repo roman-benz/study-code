@@ -139,7 +139,7 @@ ParkingAssistant::ParkingAssistant(double warning_distance)
 {
 }
 
-void ParkingAssistant::add_sensor(DistanceSensor *sensor)
+void ParkingAssistant::add_sensor(std::shared_ptr<DistanceSensor> sensor)
 {
     sensors.push_back(sensor);
 }

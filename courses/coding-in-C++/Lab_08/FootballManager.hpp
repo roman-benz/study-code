@@ -60,6 +60,8 @@ private:
 public:
     FootballManager() = default;
 
+    //Single Responsibility Principle
+
     void prepare_player(Player &player, const std::string &strategy);
 
     void train_player(Player &player, int intensity) override;
